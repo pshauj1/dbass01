@@ -50,10 +50,14 @@ To remove object files and the executable, use:
 
 # Main logic of test.cc
 
-- main(): Reads the student.csv file, stores it in a vector (db) of StudentRecord structures, and calls each benchmark function.  
-- test_degree(degree, data_size, db): Creates three types of trees with the specified degree ($d$).  It inserts 100,000 data points and records the elapsed time and the number of splits. 
-- test_randomsearch(degree, data_size, db):
-Generates 10,000 random target IDs using the mt19937 engine.  It searches for these keys in each tree to measure the average search time.  test_query(degree, data_size, db): Extracts data with student IDs ranging from 202083137 to 202150000 using the range_query() function.  cal_avg_weight: Calculates the average weight of female students within that range by referencing the returned list of RIDs.
-- test_randomdelete(degree, data_size, db, count): Deletes 10,000 randomly selected records and measures the time taken.  
-- check_integrity_bt / check_integrity_bp: After the deletion operation is complete, these functions recursively check whether all nodes comply with the B-tree minimum key rule ($(d-1)/2$) to verify structural integrity.
+**You can conduct experiments by adjusting the parameters of this function.**
+
+- **main()**: Reads the student.csv file, stores it in a vector (db) of StudentRecord structures, and calls each benchmark function.  
+- **test_degree(degree, data_size, db)**: Creates three types of trees with the specified degree ($d$).  It inserts 100,000 data points and records the elapsed time and the number of splits. 
+- **test_randomsearch(degree, data_size, db)**:
+Generates 10,000 random target IDs using the mt19937 engine.  It searches for these keys in each tree to measure the average search time.  test_query(degree, data_size, db): Extracts data with student IDs ranging from 202083137 to 202150000 using the range_query() function.
+- **test_randomdelete(degree, data_size, db, count)**: Deletes randomly selected records and measures the time taken, Delete the number of items specified by the `count` variable
+## helper function of test.cc
+- **check_integrity_bt / check_integrity_bp**: After the deletion operation is complete, these functions recursively check whether all nodes comply with the B-tree minimum key rule ($(d-1)/2$) to verify structural integrity.
+- **cal_avg_weight**: Calculates the average weight of female students within that range by referencing the returned list of RIDs.
 
